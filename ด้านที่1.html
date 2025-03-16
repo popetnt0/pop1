@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การตรวจสอบรหัส</title>
+    <style>
+        .transfer-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            background-color: #3dff7e;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .transfer-button:hover {
+            background-color: #095f26;
+        }
+
+        .transfer-button i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: auto;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #error {
+            color: red;
+            display: none;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        #data {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #data h3 {
+            color: #333;
+        }
+
+        .show-password {
+            background: none;
+            border: none;
+            color: #007BFF;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .transfer-button1 {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #000000;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .transfer-button1:hover {
+            background-color: #09d7fc;
+        }
+
+        .transfer-button1 i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            var correctPassword = "ไม่มีเหตุผล"; // รหัสที่ถูกต้อง
+
+            if (password === correctPassword) {
+                document.getElementById("data").style.display = "block"; // แสดงข้อมูล
+                document.getElementById("error").style.display = "none"; // ซ่อนข้อความผิดพลาด
+            } else {
+                document.getElementById("error").style.display = "block"; // แสดงข้อความผิดพลาด
+                document.getElementById("data").style.display = "none"; // ซ่อนข้อมูล
+            }
+        }
+
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            var passwordType = passwordField.type;
+
+            // เปลี่ยนประเภทของฟิลด์รหัสจาก 'password' เป็น 'text' และกลับกัน
+            if (passwordType === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>รหัสที่2</h2>
+        <h4>ไม่คิดใช่ไหมละว่าจะมี่รหัสอีก</h4>
+        <label for="password">notsee ในigผมคือ:</label>
+        <input type="password" id="password" placeholder="กรอกรหัสที่นี่">
+        <button onclick="checkPassword()">ยืนยัน</button>
+        <button class="show-password" onclick="togglePassword()">แสดง/ซ่อน รหัส</button>
+        <div>
+            <a class="transfer-button1" href="index.html">
+                <i class="fas fa-money-bill-wave"></i> หน้าหลัก
+            </a>
+        </div>
+        <p id="error">รหัสไม่ถูกต้อง! กรุณาลองใหม่อีกครั้ง.</p>
+
+        <div id="data">
+            <h3>เก่งชิบหาย</h3>
+            <a class="transfer-button" href="ข้อมูล.html">
+                <i class="fas fa-money-bill-wave"></i> ไปแบบทดสอบสุดทาย
+            </a>
+            
+            <p>pop_notsee</p>
+            <p>pop=ชื่อผม</p>
+            <p>notsee=ความไม่มีเหตุผลไรเลย</p>
+        </div>
+    </div>
+
+</body>
+</html>

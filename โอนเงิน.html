@@ -3,24 +3,12 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>นพณัช No.1</title>
+    <title>โองเงินให้ภพ</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="icon" type="image/jpeg" href="111.jpg" sizes="32x32">
     <script src='main.js'></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
          body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -113,31 +101,6 @@
             margin-right: 8px;
         }
 
-        .transfer-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background-color: #30aee9;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 10px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .transfer-button:hover {
-            background-color: #034cac;
-        }
-
-        .transfer-button i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
         img {
             width: 100%;
             max-width: 500px;
@@ -178,69 +141,18 @@
     </style>
 </head>
 <body>
-    <img src="p.jpg" alt="นพณัชเอง" sizes="50%">
-
-    <a class="transfer-button1" href="index.html">
-        <i class="fas fa-money-bill-wave"></i> หน้าหลัก
-    </a>
-    <a class="transfer-button" href="โอนเงิน.html">
-        <i class="fas fa-money-bill-wave"></i> โอนเงิน
-    </a>
-    <a class="transfer-button" href="ความลับ.html">
-        <i class="fas fa-money-bill-wave"></i> เข้ารหัส
-    </a>
-    <body>
-        <h2>ให้คะแนนความชอบ</h2>
-        <div class="button-container">
-            <button class="like-button" id="like-btn" onclick="like()">👍 ชอบ (<span id="like-count">0</span>)</button>
-            <button class="dislike-button" id="dislike-btn" onclick="dislike()">👎 ไม่ชอบ (<span id="dislike-count">0</span>)</button>
+    <h1>ช่องทางการโอน Qr code</h1>
+    
+    <div class="qr-container">
+        <div class="qr-box">
+            <img src="true.png" alt="Qr true" style="width: 45%; height: auto;">
+            <h4>เบอร์: 0621715747<br>ชื่อ: นพณัช วรรณพงษ์</h4>
         </div>
-        
-        <div class="progress-bar-container">
-            <div class="like-bar" id="like-bar" style="width: 50%;"></div>
-            <div class="dislike-bar" id="dislike-bar" style="width: 50%;"></div>
+        <div class="qr-box">
+            <img src="k.jpg" alt="Qr k" style="width: 45%; height: auto;">
+            <h4>เลขบัญชี: 197-3-16312-0<br>ชื่อ: นพณัช วรรณพงษ์</h4>
         </div>
-        
-        <script>
-            let likeCount = 0;
-            let dislikeCount = 0;
-            let totalVotes = 0;
-            let clicked = false;
-    
-            function updateProgressBar() {
-                totalVotes = likeCount + dislikeCount;
-                let likePercentage = totalVotes > 0 ? (likeCount / totalVotes * 100).toFixed(1) : 50;
-                let dislikePercentage = totalVotes > 0 ? (dislikeCount / totalVotes * 100).toFixed(1) : 50;
-                document.getElementById("like-bar").style.width = likePercentage + "%";
-                document.getElementById("dislike-bar").style.width = dislikePercentage + "%";
-            }
-    
-            function like() {
-                if (!clicked) {
-                    likeCount++;
-                    document.getElementById("like-count").innerText = likeCount;
-                    disableButtons();
-                    updateProgressBar();
-                }
-            }
-    
-            function dislike() {
-                if (!clicked) {
-                    dislikeCount++;
-                    document.getElementById("dislike-count").innerText = dislikeCount;
-                    disableButtons();
-                    updateProgressBar();
-                }
-            }
-    
-            function disableButtons() {
-                document.getElementById("like-btn").disabled = true;
-                document.getElementById("dislike-btn").disabled = true;
-                clicked = true;
-            }
-        </script>
-    </body>
-
+    </div>
 
     <p>ช่องทางติดต่อ:</p>
 
@@ -250,5 +162,10 @@
     <a class="button" href="https://www.facebook.com/pnt.popnottop" target="_blank">
         <i class="fab fa-facebook"></i> ไปที่ Facebook
     </a>
+    <div>
+        <a class="transfer-button1" href="index.html">
+            <i class="fas fa-money-bill-wave"></i> หน้าหลัก
+        </a>
+    </div>
 </body>
 </html>
