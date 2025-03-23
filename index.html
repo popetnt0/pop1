@@ -9,19 +9,7 @@
     <script src='main.js'></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-         body {
+          body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
@@ -62,19 +50,34 @@
         .like-bar {
             background-color: #4CAF50;
             height: 100%;
-            width: 50%;
             transition: width 0.5s;
         }
         .dislike-bar {
             background-color: #f44336;
             height: 100%;
-            width: 50%;
             transition: width 0.5s;
         }
-        body {
+                                  
+
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            margin: 50px;
         }
+        
 
         .qr-container {
             display: flex;
@@ -191,54 +194,66 @@
     </a>
     <body>
         <h2>ให้คะแนนความชอบ</h2>
-        <div class="button-container">
-            <button class="like-button" id="like-btn" onclick="like()">👍 ชอบ (<span id="like-count">0</span>)</button>
-            <button class="dislike-button" id="dislike-btn" onclick="dislike()">👎 ไม่ชอบ (<span id="dislike-count">0</span>)</button>
-        </div>
-        
-        <div class="progress-bar-container">
-            <div class="like-bar" id="like-bar" style="width: 50%;"></div>
-            <div class="dislike-bar" id="dislike-bar" style="width: 50%;"></div>
-        </div>
-        
-        <script>
-            let likeCount = 0;
-            let dislikeCount = 0;
-            let totalVotes = 0;
-            let clicked = false;
+    <div class="button-container">
+        <button class="like-button" id="like-btn" onclick="like()">👍 ชอบ (<span id="like-count">0</span>)</button>
+        <button class="dislike-button" id="dislike-btn" onclick="dislike()">👎 ไม่ชอบ (<span id="dislike-count">0</span>)</button>
+    </div>
     
-            function updateProgressBar() {
-                totalVotes = likeCount + dislikeCount;
-                let likePercentage = totalVotes > 0 ? (likeCount / totalVotes * 100).toFixed(1) : 50;
-                let dislikePercentage = totalVotes > 0 ? (dislikeCount / totalVotes * 100).toFixed(1) : 50;
-                document.getElementById("like-bar").style.width = likePercentage + "%";
-                document.getElementById("dislike-bar").style.width = dislikePercentage + "%";
+    <div class="progress-bar-container">
+        <div class="like-bar" id="like-bar" style="width: 50%;"></div>
+        <div class="dislike-bar" id="dislike-bar" style="width: 50%;"></div>
+    </div>
+    
+    <script>
+        let likeCount = localStorage.getItem("likeCount") ? parseInt(localStorage.getItem("likeCount")) : 0;
+        let dislikeCount = localStorage.getItem("dislikeCount") ? parseInt(localStorage.getItem("dislikeCount")) : 0;
+        let clicked = localStorage.getItem("clicked") ? true : false;
+
+        function updateUI() {
+            document.getElementById("like-count").innerText = likeCount;
+            document.getElementById("dislike-count").innerText = dislikeCount;
+            updateProgressBar();
+
+            if (clicked) {
+                disableButtons();
             }
-    
-            function like() {
-                if (!clicked) {
-                    likeCount++;
-                    document.getElementById("like-count").innerText = likeCount;
-                    disableButtons();
-                    updateProgressBar();
-                }
-            }
-    
-            function dislike() {
-                if (!clicked) {
-                    dislikeCount++;
-                    document.getElementById("dislike-count").innerText = dislikeCount;
-                    disableButtons();
-                    updateProgressBar();
-                }
-            }
-    
-            function disableButtons() {
-                document.getElementById("like-btn").disabled = true;
-                document.getElementById("dislike-btn").disabled = true;
+        }
+
+        function updateProgressBar() {
+            let totalVotes = likeCount + dislikeCount;
+            let likePercentage = totalVotes > 0 ? (likeCount / totalVotes * 100).toFixed(1) : 50;
+            let dislikePercentage = totalVotes > 0 ? (dislikeCount / totalVotes * 100).toFixed(1) : 50;
+            document.getElementById("like-bar").style.width = likePercentage + "%";
+            document.getElementById("dislike-bar").style.width = dislikePercentage + "%";
+        }
+
+        function like() {
+            if (!clicked) {
+                likeCount++;
+                localStorage.setItem("likeCount", likeCount);
+                localStorage.setItem("clicked", true);
                 clicked = true;
+                updateUI();
             }
-        </script>
+        }
+
+        function dislike() {
+            if (!clicked) {
+                dislikeCount++;
+                localStorage.setItem("dislikeCount", dislikeCount);
+                localStorage.setItem("clicked", true);
+                clicked = true;
+                updateUI();
+            }
+        }
+
+        function disableButtons() {
+            document.getElementById("like-btn").disabled = true;
+            document.getElementById("dislike-btn").disabled = true;
+        }
+
+        document.addEventListener("DOMContentLoaded", updateUI);
+    </script>
     </body>
 
 
